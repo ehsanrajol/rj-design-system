@@ -1,24 +1,41 @@
 name: Release
-# Ein Tag vX.Y.Z bereitet die Version nur vor (npm stage publish).
-# Veröffentlicht wird sie erst, wenn der Owner sie auf npmjs.com mit 2FA freigibt.
+# Eine neue Version in package.json auf main wird nur vorbereitet (npm stage publish)
+# und bekommt das Tag vX.Y.Z. Veröffentlicht ist sie erst, wenn der Owner sie auf
+# npmjs.com mit 2FA freigibt.
 on:
   push:
-    tags: ["v*.*.*"]
+    branches: [main]
+    paths: [package.json]
+  workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
+concurrency: release
 jobs:
   stage:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           registry-url: https://registry.npmjs.org
-      - name: Tag passt zur Version
-        run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
-      - run: npm test
-      - run: npm install -g npm@11
-      - run: npm stage publish --access public
+      - name: Version schon getaggt?
+        id: version
+        run: |
+          v="v$(node -p 'require("./package.json").version')"
+          echo "tag=$v" >> "$GITHUB_OUTPUT"
+          if git rev-parse -q --verify "refs/tags/$v" >/dev/null; then echo "new=false" >> "$GITHUB_OUTPUT"; else echo "new=true" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.version.outputs.new == 'true'
+        run: npm test
+      - if: steps.version.outputs.new == 'true'
+        run: npm install -g npm@11
+      - if: steps.version.outputs.new == 'true'
+        run: npm stage publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - if: steps.version.outputs.new == 'true'
+        run: |
+          git tag "${{ steps.version.outputs.tag }}"
+          git push origin "${{ steps.version.outputs.tag }}"
