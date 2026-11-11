@@ -1,0 +1,103 @@
+/* RJ. Design System – generiert aus tokens.json, nicht von Hand ändern. */
+
+/* Dunkel (Standard) */
+:root {
+  --font-sans: Jost, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  --font-weight-text: 400;
+  --font-weight-headline: 500;
+  --radius: 0;
+  --bg: #0a0d16;
+  --surface: #111522;
+  --surface-2: #181d2d;
+  --surface-3: #212739;
+  --text: #f5f7ff;
+  --text-secondary: rgba(245, 247, 255, 0.74);
+  --text-tertiary: rgba(245, 247, 255, 0.56);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --overlay: rgba(2, 4, 10, 0.76);
+  --accent: #192bc2;
+  --accent-ink: #8c99ff;
+  --accent-soft: rgba(25, 43, 194, 0.3);
+  --accent-contrast: #ffffff;
+  --success: #4fd1a5;
+  --danger: #f2706f;
+  --warning: #f0b453;
+  --chart-1: #384ae5;
+  --chart-2: #c4851c;
+  --chart-3: #1f9e78;
+  --chart-4: #a46ee8;
+  --chart-5: #e0595b;
+  --chart-6: #2899c8;
+  --chart-grid: rgba(255, 255, 255, 0.06);
+  --topic-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --dialog-shadow: 0 35px 120px rgba(0, 0, 0, 0.33);
+  --glass-bg: rgba(10, 13, 22, 0.92);
+  color-scheme: dark;
+}
+
+/* Hell */
+:root[data-theme="light"] {
+  --bg: #f7f7f5;
+  --surface: #ffffff;
+  --surface-2: #efefed;
+  --surface-3: #e4e5e2;
+  --text: #17191c;
+  --text-secondary: rgba(23, 25, 28, 0.78);
+  --text-tertiary: #646970;
+  --border: #dedfdd;
+  --border-strong: #c9cbc8;
+  --overlay: rgba(12, 14, 17, 0.76);
+  --accent: #192bc2;
+  --accent-ink: #192bc2;
+  --accent-soft: #eef0fc;
+  --accent-contrast: #ffffff;
+  --success: #137a3d;
+  --danger: #b42318;
+  --warning: #a35a00;
+  --chart-1: #192bc2;
+  --chart-2: #c7861a;
+  --chart-3: #0f9b73;
+  --chart-4: #9152dc;
+  --chart-5: #d9534f;
+  --chart-6: #1a8cc4;
+  --chart-grid: rgba(23, 25, 28, 0.07);
+  --topic-shadow: 0 8px 28px rgba(23, 25, 28, 0.14);
+  --dialog-shadow: 0 35px 120px rgba(0, 0, 0, 0.33);
+  --glass-bg: rgba(247, 247, 245, 0.92);
+  color-scheme: light;
+}
+
+/* System: folgt dem Gerät */
+@media (prefers-color-scheme: light) {
+  :root[data-theme="system"] {
+    --bg: #f7f7f5;
+    --surface: #ffffff;
+    --surface-2: #efefed;
+    --surface-3: #e4e5e2;
+    --text: #17191c;
+    --text-secondary: rgba(23, 25, 28, 0.78);
+    --text-tertiary: #646970;
+    --border: #dedfdd;
+    --border-strong: #c9cbc8;
+    --overlay: rgba(12, 14, 17, 0.76);
+    --accent: #192bc2;
+    --accent-ink: #192bc2;
+    --accent-soft: #eef0fc;
+    --accent-contrast: #ffffff;
+    --success: #137a3d;
+    --danger: #b42318;
+    --warning: #a35a00;
+    --chart-1: #192bc2;
+    --chart-2: #c7861a;
+    --chart-3: #0f9b73;
+    --chart-4: #9152dc;
+    --chart-5: #d9534f;
+    --chart-6: #1a8cc4;
+    --chart-grid: rgba(23, 25, 28, 0.07);
+    --topic-shadow: 0 8px 28px rgba(23, 25, 28, 0.14);
+    --dialog-shadow: 0 35px 120px rgba(0, 0, 0, 0.33);
+    --glass-bg: rgba(247, 247, 245, 0.92);
+    color-scheme: light;
+  }
+}
