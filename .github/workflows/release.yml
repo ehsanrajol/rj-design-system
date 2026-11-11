@@ -1,0 +1,24 @@
+name: Release
+# Ein Tag vX.Y.Z bereitet die Version nur vor (npm stage publish).
+# Veröffentlicht wird sie erst, wenn der Owner sie auf npmjs.com mit 2FA freigibt.
+on:
+  push:
+    tags: ["v*.*.*"]
+permissions:
+  contents: read
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Tag passt zur Version
+        run: test "v$(node -p 'require("./package.json").version')" = "$GITHUB_REF_NAME"
+      - run: npm test
+      - run: npm install -g npm@11
+      - run: npm stage publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

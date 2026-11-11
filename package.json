@@ -1,0 +1,34 @@
+{
+  "name": "@ehsanrajol/rj-design-system",
+  "version": "1.0.0",
+  "description": "RJ. Design System: Markentokens (CSS und JSON) und die Schrift Jost für EOS, ehsanrajol.com, Content Studio und Style.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehsanrajol/rj-design-system.git"
+  },
+  "type": "module",
+  "files": [
+    "tokens.css",
+    "tokens.json",
+    "fonts.css",
+    "fonts/"
+  ],
+  "exports": {
+    "./tokens.css": "./tokens.css",
+    "./tokens.json": "./tokens.json",
+    "./fonts.css": "./fonts.css",
+    "./fonts/*": "./fonts/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "*.css"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs --check && node --test test/*.test.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

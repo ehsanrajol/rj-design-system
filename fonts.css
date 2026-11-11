@@ -1,0 +1,8 @@
+/* Jost (SIL OFL 1.1, fonts/jost-OFL.txt), selbst gehostet. */
+@font-face {
+  font-family: "Jost";
+  src: url("./fonts/jost-latin-variable.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
