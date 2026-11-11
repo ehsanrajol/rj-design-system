@@ -42,8 +42,8 @@ bei Dialogen.
 1. Werte nur in `tokens.json` ändern, dann `npm run build` und `npm test`.
 2. Version in `package.json` nach SemVer erhöhen (neues Token: Minor, geänderter
    Wert: Patch, entferntes oder umbenanntes Token: Major).
-3. Nach dem Merge ein Tag `vX.Y.Z` pushen. Der Workflow `Release` bereitet die
-   Version mit `npm stage publish` vor.
+3. Nach dem Merge auf `main` bereitet der Workflow `Release` die neue
+   Version mit `npm stage publish` vor und setzt das Tag `vX.Y.Z`.
 4. Der Owner gibt sie auf npmjs.com (oder mit `npm stage approve <id>`) mit 2FA
    frei. Erst dann ist sie installierbar.
 
